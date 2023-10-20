@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="home_option_take_order">Tomar Orden</string>
+    <string name="home_option_close_order">Cerrar Orden</string>
+    <string name="login_title">Inicie Sesión</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="password">Contraseña</string>
+    <string name="select_table">Selecciona una mesa</string>
+    <string name="username">Nombre de usuario</string>
+
+</resources>
