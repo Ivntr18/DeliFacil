@@ -7,6 +7,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
 import androidx.compose.material.Scaffold
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Text
@@ -19,12 +20,15 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.alimsoft.bottomnavigation.ui.CustomBottomNavigation
 import com.alimsoft.delifacil.ui.theme.DeliFacilTheme
 import com.alimsoft.common.ui.composable.ErrorSnackbarHost
 import com.alimsoft.home.graph.homeGraph
 import com.alimsoft.login.graph.LoginDestination
 import com.alimsoft.login.graph.loginGraph
+import com.alimsoft.menu.graph.menuGraph
 import com.alimsoft.navigation.Navigator
+import com.alimsoft.order.graph.orderGraph
 import org.koin.compose.rememberKoinInject
 
 class MainActivity : ComponentActivity() {
@@ -34,13 +38,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             val snackbarHostState = remember { SnackbarHostState() }
             val navigator: Navigator = rememberKoinInject()
+            val navController = rememberNavController()
 
             DeliFacilTheme {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState),
                     bottomBar = {
-
+                        CustomBottomNavigation(navController = navController)
                     },
                     snackbarHost = {
                         ErrorSnackbarHost(
@@ -52,8 +57,6 @@ class MainActivity : ComponentActivity() {
                     },
                     modifier = Modifier.navigationBarsPadding()
                 ) { padding ->
-                    val navController = rememberNavController()
-
                     NavigationEffects(topLevelRoutes = emptyList(), navController = navController, navigator = navigator)
                     NavHost(
                         navController,
@@ -62,6 +65,8 @@ class MainActivity : ComponentActivity() {
                     ) {
                         homeGraph(navController)
                         loginGraph(navController)
+                        orderGraph(navController)
+                        menuGraph(navController)
                     }
                 }
             }

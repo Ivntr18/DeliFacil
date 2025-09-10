@@ -10,6 +10,7 @@ dependencies {
     implementation(project(":common:core"))
     implementation(project(":navigator"))
     implementation(project(":common:ui"))
+    implementation(project(":feature:order"))
 
     implementation(libs.timber)
     testImplementation(libs.junit)

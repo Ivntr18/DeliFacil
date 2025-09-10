@@ -74,6 +74,9 @@ dependencies {
     implementation(project(":navigator"))
     implementation(project(":feature:home"))
     implementation(project(":feature:login"))
+    implementation(project(":feature:bottomNavigation"))
+    implementation(project(":feature:order"))
+    implementation(project(":feature:menu"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)

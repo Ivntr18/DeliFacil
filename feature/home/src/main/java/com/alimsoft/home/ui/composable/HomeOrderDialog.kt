@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
@@ -36,6 +37,7 @@ import androidx.navigation.NavController
 import com.alimsoft.home.state.HomeScreenState
 import com.alimsoft.home.state.HomeUiEvent
 import com.alimsoft.home.state.rememberHomeScreenState
+import com.alimsoft.order.graph.OrderDestination
 import com.alimsoft.drawables.R.drawable as drawables
 import com.alimsoft.strings.R.string as strings
 
@@ -107,6 +109,18 @@ fun HomeOrderDialog(
                         }
                     }
                 }
+            }
+
+            Button(
+                modifier = Modifier.fillMaxWidth().padding(30.dp),
+                onClick = { screenState.dispatch(HomeUiEvent.StartOrder) },
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(
+                    text = stringResource(id = strings.continue_button),
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier.padding(vertical = 20.dp)
+                )
             }
         }
     }

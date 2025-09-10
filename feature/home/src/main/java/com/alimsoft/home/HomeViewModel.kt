@@ -12,12 +12,14 @@ import com.alimsoft.home.state.HomeUiEffect
 import com.alimsoft.home.state.HomeUiEvent
 import com.alimsoft.home.state.HomeUiState
 import com.alimsoft.navigation.Navigator
+import com.alimsoft.order.graph.OrderDestination
 import kotlinx.coroutines.launch
 import com.alimsoft.strings.R.string as strings
 
 class HomeViewModel(
     private val dispatchers: CoroutineDispatchers,
     private val observeTableList: ObserveTableList,
+    private val orderRepository: OrderRepository,
     navigator: Navigator
 ) : BaseViewModel<HomeUiState, HomeUiEvent, HomeUiEffect>(HomeUiState()),
     Navigator by navigator {
@@ -34,6 +36,12 @@ class HomeViewModel(
             when (event) {
                 HomeUiEvent.Refresh -> {
 
+                }
+                HomeUiEvent.StartOrder -> {
+                    state.value.selectedTable?.let {
+                        orderRepository.startOrder(it)
+                        navigate(OrderDestination.route())
+                    }
                 }
                 is HomeUiEvent.SelectTable -> {
                     setState {

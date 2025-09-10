@@ -5,5 +5,6 @@ import com.alimsoft.domain.entities.TableData
 
 sealed interface HomeUiEvent : UiEvent {
     object Refresh : HomeUiEvent
+    object StartOrder : HomeUiEvent
     data class SelectTable(val table: TableData) : HomeUiEvent
 }

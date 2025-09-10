@@ -65,6 +65,7 @@ versionCatalogUpdate = "0.7.0"
 versionCode = "1"
 versionName = "Apple"
 zxing = "3.5.1"
+appcompat = "1.6.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidPlugin" }
@@ -185,6 +186,7 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 
 #debug
 process-phoenix = { module = "com.jakewharton:process-phoenix", version.ref = "processPhoenix" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 [bundles]
 androidx = ["androidx-autofill", "androidx-core", "androidx-datastore", "androidx-lifecycle-runtime"]
